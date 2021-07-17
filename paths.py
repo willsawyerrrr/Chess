@@ -18,11 +18,10 @@ class Path(object):
         position = initial
         x, y = changes[direction]
         count = 0
-        while True:
-            position = (position[0] + y, position[1] + x)
-            if position == destination:
-                break
+        position = (position[0] + y, position[1] + x)
+        while position != destination:
             self._cells.append(position)
+            position = (position[0] + y, position[1] + x)
             count += 1
             if count > 8:
                 self._valid = False
