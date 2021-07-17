@@ -53,11 +53,10 @@ def new_game(window):
 
     initial = None
     destination = None
-    winner = ""
     count = 0
     turns = {0: "White", 1: "Black"}
 
-    return black, white, initial, destination, winner, count, turns
+    return black, white, initial, destination, count, turns
 
 
 def update_position(piece, window, destination):

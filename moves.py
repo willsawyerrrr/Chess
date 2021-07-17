@@ -2,7 +2,6 @@
 
 import PySimpleGUI as sg
 from paths import Path
-from pieces import *
 
 
 def get_direction(initial, destination):
