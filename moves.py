@@ -155,6 +155,7 @@ def validate_path(piece, black, white, initial, destination, direction, window):
     y = destination[0] - initial[0]
     x = destination[1] - initial[1]
     piece_type = piece.get_type()
+    team = piece.get_team()
     error_msg = f"Your {piece_type} can't move that far."
     if piece_type == "Pawn" and abs(y) > 2:
         # If a Pawn moves more than two cells.
@@ -176,9 +177,12 @@ def validate_path(piece, black, white, initial, destination, direction, window):
     for cell in path.get_cells():
         blockage = get_piece(black, white, cell)
         if blockage is not None:
-            error_msg = f"Your {piece_type} can't move here. It's path " \
-                        f"is blocked by your {blockage.get_type()} at " \
-                        f"{blockage.get_position()}."
+            if blockage.get_team() == team:
+                error_msg = f"Your {piece_type} can't move here. It's path " \
+                            f"is blocked by your {blockage.get_type()}."
+            else:
+                error_msg = f"Your {piece_type} can't move here. It's path " \
+                            f"is blocked by your {blockage.get_type()}."
             window["out"].update(error_msg)
             return False
     return True
