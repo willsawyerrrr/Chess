@@ -4,7 +4,6 @@
 # TODO: Find website to give credit for icons in welcome screen.
 
 import PySimpleGUI as sg
-import gui
 from pieces import *
 
 
@@ -44,21 +43,21 @@ chessboard = [
 
 welcome_window = sg.Window("Welcome", welcome_layout, resizable=True,
                            finalize=True).read(close=True)
-window = sg.Window("Chess", chessboard, location=(625, 0), size=(716, 700),
+game_window = sg.Window("Chess", chessboard, location=(625, 0), size=(716, 700),
                    icon=None, finalize=True)
 
-black, white, initial, destination, winner, count, turns = gui.new_game(window)
+black, white, initial, destination, count, turns = gui.new_game(game_window)
 
 # Game loop.
 while True:
-    event, values = window.read()
+    event, values = game_window.read()
 
     if event == sg.WIN_CLOSED:
-        window.close()
+        game_window.close()
         break
     elif event == "new_game":
-        black, white, initial, destination, winner, count, turns = \
-            gui.new_game(window)
+        black, white, initial, destination, count, turns = gui.new_game(
+                game_window)
     else:  # A cell is clicked.
         if initial is None:  # The piece to move hasn't been chosen.
             piece = moves.get_piece(black, white, event)
@@ -68,35 +67,35 @@ while True:
             destination = event
             dest_piece = moves.get_piece(black, white, destination)
             if dest_piece is None:
-                if piece.move(destination, black, white, window):
+                if piece.move(destination, black, white, game_window):
                     count += 1
-                    window["turn"].update(f"It's {turns[count % 2]}'s turn.")
-                    window["out"].update("")
-                    if piece.get_type() == "Pawn" and \
-                        destination[0] == piece.get_far():
+                    game_window["turn"].update(f"It's {turns[count % 2]}'s turn.")
+                    game_window["out"].update("")
+                    if piece.get_type() == "Pawn" and destination[0] == \
+                            piece.get_far():
                         promo_piece = sg.popup_get_text("Which piece do you "
                                                        "want to promote to?",
                                                        "Promotion")
                         black, white = piece.promote(promo_piece, black,
-                                                     white, window)
+                                                     white, game_window)
             else:
-                if piece.attack(destination, black, white, window):
+                if piece.attack(destination, black, white, game_window):
                     black, white, = dest_piece.kill(black, white)
                     count += 1
-                    window["turn"].update(f"It's {turns[count % 2]}'s turn.")
-                    window["out"].update("")
+                    game_window["turn"].update(f"It's {turns[count % 2]}'s turn.")
+                    game_window["out"].update("")
                     if piece.get_type() == "Pawn" and destination[0] == \
                             piece.get_far():
                         promo_piece = sg.popup_get_text("Which piece do you "
                                                         "want to promote to?",
                                                         "Promotion")
                         black, white = piece.promote(promo_piece, black,
-                                                     white, window)
+                                                     white, game_window)
             initial, destination = None, None
     winner = gui.check_endgame(black, white)
     if winner is not None:
-        window["turn"].update("")
-        window["out"].update(f"{winner} wins!")
+        game_window["turn"].update("")
+        game_window["out"].update(f"{winner} wins!")
         break
 
-window.close()
+game_window.close()
