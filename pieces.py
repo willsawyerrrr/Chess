@@ -81,17 +81,17 @@ class Piece(object):
             True if the piece's attack is valid. False otherwise.
         """
         position = self.get_position()
-        direction = get_direction(position, destination)
+        direction = moves.get_direction(position, destination)
         if not direction:
             return False
-        if not validate_attack(self, direction, window):
+        if not moves.validate_attack(self, direction, window):
             return False
-        if not validate_position(self, black, white, destination, window):
+        if not moves.validate_position(self, black, white, destination, window):
             return False
-        if not validate_path(self, black, white, position, destination,
+        if not moves.validate_path(self, black, white, position, destination,
                              direction, window):
             return False
-        update_position(self, window, destination)
+        gui.update_position(self, window, destination)
         self._pos = destination
         self._initial = False
         return True
@@ -194,11 +194,11 @@ class Pawn(Piece):
         if team == "Black":
             black.remove(self)
             black.append(pieces[piece_type])
-            update_position(black[-1], window, position)
+            gui.update_position(black[-1], window, position)
         else:
             white.remove(self)
             white.append(pieces[piece_type])
-            update_position(black[-1], window, position)
+            gui.update_position(black[-1], window, position)
         return black, white
 
     def get_move(self):
@@ -242,8 +242,8 @@ class Knight(Piece):
             True if the piece's move is valid. False otherwise.
         """
         position = self.get_position()
-        if knight(position, destination, window):
-            update_position(self, window, destination)
+        if moves.knight(position, destination, window):
+            gui.update_position(self, window, destination)
             self._pos = destination
             return True
         return False
@@ -268,10 +268,10 @@ class Knight(Piece):
             True if the piece's move is valid. False otherwise.
         """
         position = self.get_position()
-        dest_piece = get_piece(black, white, destination)
+        dest_piece = moves.get_piece(black, white, destination)
         if dest_piece.get_team() != self.get_team():
-            if knight(position, destination, window):
-                update_position(self, window, destination)
+            if moves.knight(position, destination, window):
+                gui.update_position(self, window, destination)
                 self._pos = destination
                 return True
         return False
