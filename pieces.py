@@ -200,11 +200,11 @@ class Pawn(Piece):
         if team == "Black":
             black.remove(self)
             black.append(pieces[piece_type])
-            other.update_position(black[-1], window, position)
+            black[-1].update_position(window, position)
         else:
             white.remove(self)
             white.append(pieces[piece_type])
-            other.update_position(black[-1], window, position)
+            white[-1].update_position(window, position)
         return black, white
 
     def get_move(self):
@@ -249,7 +249,7 @@ class Knight(Piece):
         """
         position = self.get_position()
         if moves.knight(position, destination, window):
-            other.update_position(self, window, destination)
+            self.update_position(window, destination)
             self._pos = destination
             return True
         return False
@@ -277,7 +277,7 @@ class Knight(Piece):
         dest_piece = moves.get_piece(black, white, destination)
         if dest_piece.get_team() != self.get_team():
             if moves.knight(position, destination, window):
-                other.update_position(self, window, destination)
+                self.update_position(window, destination)
                 self._pos = destination
                 return True
         return False
