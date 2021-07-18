@@ -5,16 +5,7 @@
 
 import PySimpleGUI as sg
 from pieces import *
-
-
-def DarkCell(position):
-    """ Returns a PySimpleGUI image element with a black background. """
-    return sg.Button(button_color="black", key=position)
-
-
-def LightCell(position):
-    """ Returns a PySimpleGUI image element with a white background. """
-    return sg.Button(button_color="white", key=position)
+import other
 
 
 welcome_msg = (
@@ -37,8 +28,8 @@ chessboard = [
      sg.Text(key="turn", size=(20, 1), justification="center"),
      sg.Text(key="out", size=(50, 1), justification="center")]]\
         + [
-    [LightCell((row, column)) if (row + column) % 2 == 0
-    else DarkCell((row, column)) for column in range(8)]
+    [other.LightCell((row, column)) if (row + column) % 2 == 0
+    else other.DarkCell((row, column)) for column in range(8)]
     for row in range(8)]
 
 welcome_window = sg.Window("Welcome", welcome_layout, resizable=True,
@@ -46,7 +37,7 @@ welcome_window = sg.Window("Welcome", welcome_layout, resizable=True,
 game_window = sg.Window("Chess", chessboard, location=(625, 0), size=(716, 700),
                    icon=None, finalize=True)
 
-black, white, initial, destination, count, turns = gui.new_game(game_window)
+black, white, initial, destination, count, turns = other.new_game(game_window)
 
 # Game loop.
 while True:
@@ -56,7 +47,7 @@ while True:
         game_window.close()
         break
     elif event == "new_game":
-        black, white, initial, destination, count, turns = gui.new_game(
+        black, white, initial, destination, count, turns = other.new_game(
                 game_window)
     else:  # A cell is clicked.
         if initial is None:  # The piece to move hasn't been chosen.
@@ -92,7 +83,7 @@ while True:
                         black, white = piece.promote(promo_piece, black,
                                                      white, game_window)
             initial, destination = None, None
-    winner = gui.check_endgame(black, white)
+    winner = other.check_endgame(black, white)
     if winner is not None:
         game_window["turn"].update("")
         game_window["out"].update(f"{winner} wins!")

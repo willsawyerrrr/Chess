@@ -217,16 +217,16 @@ def get_piece(black, white, position):
 
     Parameters
     ----------
-    black : list[Piece]
+    black : list[pieces.Piece]
         The list of current Black pieces.
-    white : list[Piece]
+    white : list[pieces.Piece]
         The list of current White pieces.
     position : tuple[int, int]
         The position which is being checked for a piece.
 
     Returns
     -------
-    Piece
+    pieces.Piece
         The piece which is at the given position. None if there is no piece.
     """
     for piece in black:

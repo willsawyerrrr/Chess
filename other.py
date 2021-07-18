@@ -1,4 +1,17 @@
+""" Other functions used to operate the Chess game. """
+
 from pieces import *
+import PySimpleGUI as sg
+
+
+def DarkCell(position):
+    """ Returns a PySimpleGUI image element with a black background. """
+    return sg.Button(button_color="black", key=position)
+
+
+def LightCell(position):
+    """ Returns a PySimpleGUI image element with a white background. """
+    return sg.Button(button_color="white", key=position)
 
 
 def new_game(window):
@@ -73,9 +86,9 @@ def check_endgame(black, white):
     Parameters
     ----------
     black : list[Piece]
-        The list of current Black pieces.
+        The list of current Black 
     white : list[Piece]
-        The list of current White pieces.
+        The list of current White 
 
     Returns
     -------
