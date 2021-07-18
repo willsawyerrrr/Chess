@@ -35,7 +35,7 @@ chessboard = [
 welcome_window = sg.Window("Welcome", welcome_layout, resizable=True,
                            finalize=True).read(close=True)
 game_window = sg.Window("Chess", chessboard, location=(625, 0), size=(716, 700),
-                   icon=None, finalize=True)
+                   icon=r".\icons\chess_board.ico", finalize=True)
 
 black, white, initial, destination, count, turns = other.new_game(game_window)
 
