@@ -1,7 +1,6 @@
 """ Chess pieces. """
 
 import moves
-import other
 
 
 class Piece(object):
@@ -56,7 +55,7 @@ class Piece(object):
         if not moves.validate_path(self, black, white, position, destination,
                              direction, window):
             return False
-        other.update_position(self, window, destination)
+        self.update_position(window, destination)
         self._pos = destination
         self._initial = False
         return True
@@ -91,7 +90,7 @@ class Piece(object):
         if not moves.validate_path(self, black, white, position, destination,
                              direction, window):
             return False
-        other.update_position(self, window, destination)
+        self.update_position(window, destination)
         self._pos = destination
         self._initial = False
         return True
@@ -118,6 +117,13 @@ class Piece(object):
         elif self.get_team() == "White":
             white.remove(self)
         return black, white
+
+    def update_position(self, window, destination):
+        """ Updates position of a piece's icon. """
+        window[self.get_position()].update(image_filename="",
+                                           image_size=(75, 75))
+        window[destination].update(image_filename=self.get_icon_path(),
+                                   image_size=(75, 75))
 
     def promote(self, piece_type, black, white, window):
         return

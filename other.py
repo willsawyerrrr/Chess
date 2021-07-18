@@ -59,9 +59,9 @@ def new_game(window):
             window[(i, j)].update(image_filename="", image_size=(75, 75))
 
     for piece in black:
-        update_position(piece, window, piece.get_position())
+        piece.update_position(window, piece.get_position())
     for piece in white:
-        update_position(piece, window, piece.get_position())
+        piece.update_position(window, piece.get_position())
     window["turn"].update("It's White's turn.")
 
     initial = None
@@ -70,14 +70,6 @@ def new_game(window):
     turns = {0: "White", 1: "Black"}
 
     return black, white, initial, destination, count, turns
-
-
-def update_position(piece, window, destination):
-    """ Updates position of a piece's icon. """
-    window[piece.get_position()].update(image_filename="",
-                                        image_size=(75, 75))
-    window[destination].update(image_filename=piece.get_icon_path(),
-                               image_size=(75, 75))
 
 
 def check_endgame(black, white):
