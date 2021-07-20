@@ -16,7 +16,7 @@ chessboard = [
     for row in range(8)]
 
 game_window = sg.Window("Chess", chessboard, finalize=True, size=(716, 700),
-                        location=(0, 0), icon=r".\icons\chess_board.ico")
+                        location=(0, 0), icon=r".\icons\chess-board.ico")
 black, white, initial, destination, winner, count, turns = other.new_game(
     game_window)
 

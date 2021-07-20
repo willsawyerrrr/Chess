@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="975eff9c-f267-4429-bea1-3beb2382fbee" name="Default Changelist" comment="Edited typo." />
+    <list default="true" id="975eff9c-f267-4429-bea1-3beb2382fbee" name="Default Changelist" comment="Edited typo.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess.py" beforeDir="false" afterPath="$PROJECT_DIR$/chess.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +61,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626785557536</updated>
-      <workItem from="1626785606133" duration="1441000" />
+      <workItem from="1626785606133" duration="1490000" />
+      <workItem from="1626789028145" duration="326000" />
     </task>
     <task id="LOCAL-00001" summary="Added configuration files.">
       <created>1626785973281</created>
@@ -90,6 +94,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added configuration files." />
