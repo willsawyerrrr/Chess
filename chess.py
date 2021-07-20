@@ -49,6 +49,7 @@ while True:
                                                          piece, black, white)
             else:
                 if piece.attack(destination, black, white, game_window):
+                    black, white = dest_piece.kill(black, white)
                     count, black, white = other.end_turn(count, game_window,
                                                          piece, black, white)
             initial, destination = None, None
