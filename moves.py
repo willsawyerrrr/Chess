@@ -1,4 +1,4 @@
-""" Defines movements of chess pieces. """
+""" Functions used to validate movements and attacks of chess pieces. """
 
 import PySimpleGUI as sg
 from paths import Path
