@@ -15,14 +15,14 @@ def LightCell(position):
 
 
 def welcome():
-    welcome_msg = "Welcome to Chess!\n\nThis game has been developed by" \
+    welcome_msg = "Welcome to Chess!\n\nThis game has been developed by " \
                   "William Sawyer with use of the PySimpleGUI package."
     welcome_layout = [
         [sg.Text(welcome_msg, key="out", size=(47, 12), font="Courier")],
         [sg.Button("Start", size=(10, 1))]
     ]
-    sg.Window("Welcome", welcome_layout, finalize=True,
-              icon=r".\icons\chess_board.ico").read(close=True)
+    sg.Window("Welcome", welcome_layout, finalize=True, 
+              icon=r".\icons\chess-board.ico").read(close=True)
 
 
 def new_game(window):
