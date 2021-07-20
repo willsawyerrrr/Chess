@@ -45,7 +45,7 @@ while True:
             dest_piece = moves.get_piece(black, white, destination)
             if dest_piece is None:
                 if piece.move(destination, black, white, game_window):
-                    count, black, white = other.end_turn(count, game_window,
+               s     count, black, white = other.end_turn(count, game_window,
                                                          piece, black, white)
             else:
                 if piece.attack(destination, black, white, game_window):
