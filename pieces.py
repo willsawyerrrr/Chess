@@ -1,10 +1,9 @@
-""" Chess pieces. """
-
 import moves
 
 
 class Piece(object):
     def __init__(self, position, team):
+        """ A Chess piece, defined by its type, position and team. """
         _paths = {
             "Black Pawn": r".\icons\bp.png",
             "Black Rook": r".\icons\br.png",
@@ -107,10 +106,9 @@ class Piece(object):
 
         Returns
         -------
-        list[Piece]
-            The list of current Black pieces.
-        list[Piece]
-            The list of current White pieces.
+        tuple[list[Piece], list[Piece]]
+            list[Piece] : The list of current Black pieces.
+            list[Piece] : The list of current White pieces.
         """
         if self.get_team() == "Black":
             black.remove(self)
@@ -119,7 +117,15 @@ class Piece(object):
         return black, white
 
     def update_position(self, window, destination):
-        """ Updates position of a piece's icon. """
+        """ Updates position of a piece's icon.
+
+        Parameters
+        ----------
+        window : sg.Window
+            The Chess game window.
+        destination : tuple[int, int]
+            The cell to which the piece is moving.
+        """
         window[self.get_position()].update(image_filename="",
                                            image_size=(75, 75))
         window[destination].update(image_filename=self.get_icon_path(),
@@ -129,7 +135,7 @@ class Piece(object):
         return
 
     def get_position(self):
-        """ Returns the piece's position as a tuple: (row, column). """
+        """ Returns the piece's position as a tuple[row, column]. """
         return self._pos
 
     def get_type(self):
@@ -182,12 +188,10 @@ class Pawn(Piece):
 
         Returns
         -------
-        Piece
-            The promoted piece.
-        list[Piece]
-            The list of current Black pieces.
-        list[Piece]
-            The list of current White pieces.
+        tuple[Piece, list[Piece], list[Piece]]
+            Piece : The promoted piece.
+            list[Piece] : The list of current Black pieces.
+            list[Piece] : The list of current White pieces.
         """
         team = self.get_team()
         position = self.get_position()
@@ -221,8 +225,18 @@ class Pawn(Piece):
 
 class Rook(Piece):
     _type = "Rook"
-    _move_directions = ["left", "right", "up", "down"]
-    _attack_directions = ["left", "right", "up", "down"]
+    _move_directions = [
+        "left",
+        "right",
+        "up",
+        "down"
+    ]
+    _attack_directions = [
+        "left",
+        "right",
+        "up",
+        "down"
+    ]
 
 
 class Knight(Piece):
@@ -234,7 +248,7 @@ class Knight(Piece):
         Parameters
         ----------
         destination : tuple[int, int]
-            The cell to which a piece is attempting to move.
+            The cell to which the piece is attempting to move.
         black : list[Piece]
             The list of current Black pieces.
         white : list[Piece]
@@ -260,7 +274,7 @@ class Knight(Piece):
         Parameters
         ----------
         destination : tuple[int, int]
-            The cell to which a piece is attempting to move.
+            The cell at which a piece is attempting to attack another piece.
         black : list[Piece]
             The list of current Black pieces.
         white : list[Piece]
@@ -271,7 +285,7 @@ class Knight(Piece):
         Returns
         -------
         bool
-            True if the piece's move is valid. False otherwise.
+            True if the piece's attack is valid. False otherwise.
         """
         position = self.get_position()
         dest_piece = moves.get_piece(black, white, destination)
@@ -285,9 +299,18 @@ class Knight(Piece):
 
 class Bishop(Piece):
     _type = "Bishop"
-    _move_directions = ["top-left", "top-right", "bottom-left", "bottom-right"]
-    _attack_directions = ["top-left", "top-right", "bottom-left",
-                          "bottom-right"]
+    _move_directions = [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+    ]
+    _attack_directions = [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+    ]
 
 
 class Queen(Piece):
