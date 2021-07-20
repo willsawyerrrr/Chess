@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="975eff9c-f267-4429-bea1-3beb2382fbee" name="Default Changelist" comment="Edited typo.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess.py" beforeDir="false" afterPath="$PROJECT_DIR$/chess.py" afterDir="false" />
+    <list default="true" id="975eff9c-f267-4429-bea1-3beb2382fbee" name="Default Changelist" comment="Updated configuration files.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +19,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -62,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1626785557536</updated>
       <workItem from="1626785606133" duration="1490000" />
-      <workItem from="1626789028145" duration="326000" />
+      <workItem from="1626789028145" duration="765000" />
     </task>
     <task id="LOCAL-00001" summary="Added configuration files.">
       <created>1626785973281</created>
@@ -78,7 +80,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626787206208</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated window's icon path.">
+      <created>1626789400855</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1626789400855</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated configuration files.">
+      <created>1626789812265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1626789812265</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +115,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added configuration files." />
     <MESSAGE value="Edited typo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited typo." />
+    <MESSAGE value="Updated window's icon path." />
+    <MESSAGE value="Updated configuration files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated configuration files." />
   </component>
 </project>
